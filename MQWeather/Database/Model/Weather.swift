@@ -7,91 +7,67 @@
 
 import Foundation
 
+// MARK: - Result
 struct Result: Codable {
-    let lat: Double
-    let lon: Double
-    let timezone: String
-    let current: Current
-    var hourly: [Hourly]
-    var daily: [Daily]
-    
-    mutating func sortHourlyArray() {
-        hourly.sort { (hour1: Hourly, hour2: Hourly) -> Bool in
-            return hour1.dt < hour2.dt
-        }
-    }
-    
-    mutating func sortDailyArray() {
-        daily.sort { (day1, day2) -> Bool in
-            return day1.dt < day2.dt
-        }
-    }
-}
-
-struct Current: Codable {
-    let dt: Int
-    let sunrise: Int
-    let sunset: Int
-    let temp: Double
-    let feels_like: Double
-    let pressure: Int
-    let humidity: Int
-    let dew_point: Double
-    let uvi: Double
-    let clouds: Int
-    let wind_speed: Double
-    let wind_deg: Int
+    let coord: Coord
     let weather: [Weather]
+    let base: String
+    let main: Main
+    let visibility: Int
+    let wind: Wind
+    let clouds: Clouds
+    let dt: Int
+    let sys: Sys
+    let timezone, id: Int
+    let name: String
+    let cod: Int
 }
 
+// MARK: - Clouds
+struct Clouds: Codable {
+    let all: Int
+}
+
+// MARK: - Coord
+struct Coord: Codable {
+    let lon, lat: Double
+}
+
+// MARK: - Main
+struct Main: Codable {
+    let temp, feelsLike, tempMin, tempMax: Double
+    let pressure, humidity: Int
+
+    enum CodingKeys: String, CodingKey {
+        case temp
+        case feelsLike = "feels_like"
+        case tempMin = "temp_min"
+        case tempMax = "temp_max"
+        case pressure, humidity
+    }
+}
+
+// MARK: - Sys
+struct Sys: Codable {
+    let type, id: Int
+    let country: String
+    let sunrise, sunset: Int
+}
+
+// MARK: - Weather
 struct Weather: Codable {
     let id: Int
-    let main: String
-    let description: String
-    let icon: String
+    let main, weatherDescription, icon: String
+
+    enum CodingKeys: String, CodingKey {
+        case id, main
+        case weatherDescription = "description"
+        case icon
+    }
 }
 
-struct Hourly: Codable {
-    let dt: Int
-    let temp: Double
-    let feels_like: Double
-    let pressure: Int
-    let humidity: Int
-    let dew_point: Double
-    let clouds: Int
-    let wind_speed: Double
-    let wind_deg: Int
-    let weather: [Weather]
-}
-
-struct Daily: Codable {
-    let dt: Int
-    let sunrise: Int
-    let sunset: Int
-    let temp: Temperature
-    let feels_like: Feels_Like
-    let pressure: Int
-    let humidity: Int
-    let dew_point: Double
-    let wind_speed: Double
-    let wind_deg: Int
-    let weather: [Weather]
-    let clouds: Int
-    let uvi: Double
-}
-
-struct Temperature: Codable {
-    let day: Double
-    let min: Double
-    let max: Double
-    let night: Double
-    let eve: Double
-    let morn: Double
-}
-
-struct Feels_Like: Codable {
-    let day: Double
-    let night: Double
-    let eve: Double
-    let morn: Double
+// MARK: - Wind
+struct Wind: Codable {
+    let speed: Double
+    let deg: Int
 }

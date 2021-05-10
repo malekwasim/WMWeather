@@ -10,18 +10,17 @@ import Foundation
 class NetworkLayer {
     static let shared = NetworkLayer()
     
-    let a = "http://api.openweathermap.org/data/2.5/weather?lat=0&lon=0&appid="
-    let URL_SAMPLE = "https://api.openweathermap.org/data/2.5/onecall?lat=60.99&lon=30.9&appid=fae7190d7e6433ec3a45285ffcf55c86"
+    let URL_SAMPLE = "http://api.openweathermap.org/data/2.5/weather?lat=22.3072&lon=73.1812&appid=fae7190d7e6433ec3a45285ffcf55c86&units=imperial"
     let URL_API_KEY = "fae7190d7e6433ec3a45285ffcf55c86"
-    var URL_LATITUDE = "60.99"
-    var URL_LONGITUDE = "30.0"
+    var URL_LATITUDE = "22.3072"
+    var URL_LONGITUDE = "73.00"
     var URL_GET_ONE_CALL = ""
     let URL_BASE = "https://api.openweathermap.org/data/2.5"
     
     let session = URLSession(configuration: .default)
     
     func buildURL() -> String {
-        URL_GET_ONE_CALL = "/onecall?lat=" + URL_LATITUDE + "&lon=" + URL_LONGITUDE + "&units=imperial" + "&appid=" + URL_API_KEY
+        URL_GET_ONE_CALL = "/weather?lat=" + URL_LATITUDE + "&lon=" + URL_LONGITUDE + "&units=metric" + "&appid=" + URL_API_KEY
         return URL_BASE + URL_GET_ONE_CALL
     }
     

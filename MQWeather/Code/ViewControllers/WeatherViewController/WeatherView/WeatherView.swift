@@ -40,15 +40,15 @@ class WeatherView: UIView {
     }
     
     func setupView(_ result: Result?) {
-        guard let weather = result else {
+        guard let weatherResult = result else {
             return
         }
         
-        lblDesc.text = "\(weather.current.weather.first?.description ?? "")"
-        lblTemp.text = "\(weather.current.temp)"
-        lblWindSpeed.text = "Wind: \(weather.current.wind_speed)"
-        lblHumidity.text = "Humidity: \(weather.current.humidity)"
-        iconImage.image = UIImage(named: weather.current.weather[0].icon)
+        lblDesc.text = "\(weatherResult.weather.first?.weatherDescription ?? "")"
+        lblTemp.text = "\(weatherResult.main.temp)ºC"
+        lblWindSpeed.text = "Wind: \(weatherResult.wind.speed)m/s"
+        lblHumidity.text = "Humidity: \(weatherResult.main.humidity)%"
+        iconImage.image = UIImage(named: weatherResult.weather[0].icon)
     }
 
 }
