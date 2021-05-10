@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Weather View Controller-->
+        <scene sceneID="ejQ-wf-bHx">
+            <objects>
+                <viewController storyboardIdentifier="WeatherViewController" id="PNh-BS-6fQ" customClass="WeatherViewController" customModule="MQWeather" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bLq-Yb-anW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="skyblue" translatesAutoresizingMaskIntoConstraints="NO" id="rUE-QO-lvf">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pTq-QL-tzX" customClass="WeatherView" customModule="MQWeather" customModuleProvider="target">
+                                <rect key="frame" x="20" y="64" width="374" height="250"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="vZK-wo-j5I"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="dbs-Sl-FLt"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="pTq-QL-tzX" firstAttribute="leading" secondItem="dbs-Sl-FLt" secondAttribute="leading" constant="20" id="6YY-SO-SN9"/>
+                            <constraint firstItem="rUE-QO-lvf" firstAttribute="trailing" secondItem="dbs-Sl-FLt" secondAttribute="trailing" id="Ggf-de-rFb"/>
+                            <constraint firstItem="rUE-QO-lvf" firstAttribute="leading" secondItem="dbs-Sl-FLt" secondAttribute="leading" id="Hhg-El-75R"/>
+                            <constraint firstItem="dbs-Sl-FLt" firstAttribute="trailing" secondItem="pTq-QL-tzX" secondAttribute="trailing" constant="20" id="cmF-dQ-dko"/>
+                            <constraint firstItem="pTq-QL-tzX" firstAttribute="top" secondItem="dbs-Sl-FLt" secondAttribute="top" constant="20" id="ewS-ae-CDF"/>
+                            <constraint firstAttribute="bottom" secondItem="rUE-QO-lvf" secondAttribute="bottom" id="nri-1p-Pfg"/>
+                            <constraint firstItem="rUE-QO-lvf" firstAttribute="top" secondItem="bLq-Yb-anW" secondAttribute="top" id="o5i-NX-dgd"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="viewWeather" destination="pTq-QL-tzX" id="XPW-Yi-bdb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Qz-tg-2tU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="20" y="75"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="skyblue" width="509" height="339"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
